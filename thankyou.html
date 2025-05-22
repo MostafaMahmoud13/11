@@ -3,62 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <title>Thank You</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
+      background: #0d0d0d;
+      color: #fff;
       font-family: 'Segoe UI', sans-serif;
-      background: #f0f4f8;
-      margin: 0;
-      padding: 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-    }
-
-    .box {
-      background: #fff;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 40px 20px;
+      min-height: 100vh;
       text-align: center;
+    }
+
+    .thank-you-box {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 10px;
       max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 15px #00e67650;
     }
 
-    h1 {
-      color: #28a745;
-      font-size: 32px;
-      margin-bottom: 10px;
+    .thank-you-box h1 {
+      color: #00e676;
+      margin-bottom: 15px;
     }
 
-    p {
-      font-size: 18px;
-      color: #555;
+    .thank-you-box p {
+      margin: 10px 0;
+      font-size: 16px;
+      color: #ccc;
     }
 
-    a {
+    .thank-you-box .highlight {
+      color: #00acc1;
+      font-weight: bold;
+    }
+
+    .go-home {
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 25px;
+      padding: 10px 20px;
+      background: #00acc1;
+      color: white;
       text-decoration: none;
-      background-color: #007bff;
-      color: #fff;
-      padding: 10px 25px;
       border-radius: 5px;
+      transition: 0.3s;
     }
 
-    a:hover {
-      background-color: #0056b3;
+    .go-home:hover {
+      background: #008b9a;
     }
   </style>
 </head>
 <body>
 
-  <div class="box">
+  <div class="thank-you-box">
     <h1>✅ Thank You!</h1>
-    <p>Your order has been received successfully.</p>
-    <p>We'll contact you as soon as possible to confirm your order.</p>
-    <a href="index.html">← Back to Home</a>
+    <p>We've received your order successfully.</p>
+    <p>Product: <span class="highlight" id="product-name">-</span></p>
+    <p>Color: <span class="highlight" id="product-color">-</span></p>
+    <p>Quantity: <span class="highlight" id="product-quantity">-</span></p>
+    <p>Total Price: <span class="highlight" id="product-total">-</span></p>
+    <p>We'll contact you as soon as possible to confirm the order.</p>
+    <a href="index.html" class="go-home">← Back to Home</a>
   </div>
+
+  <script>
+    const product = JSON.parse(localStorage.getItem("product"));
+    if (product) {
+      document.getElementById("product-name").textContent = product.productName || "-";
+      document.getElementById("product-color").textContent = product.color || "-";
+      document.getElementById("product-quantity").textContent = product.quantity || "-";
+      document.getElementById("product-total").textContent = "$" + (product.price * product.quantity).toFixed(2);
+    }
+  </script>
 
 </body>
 </html>
