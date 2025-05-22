@@ -73,7 +73,8 @@
   </div>
 
   <script>
-    const product = JSON.parse(localStorage.getItem("product"));
+    const product = JSON.parse(sessionStorage.getItem("productData"));
+
     if (product) {
       document.getElementById("product-name").textContent = product.productName || "-";
       document.getElementById("product-color").textContent = product.color || "-";
