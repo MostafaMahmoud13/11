@@ -1,28 +1,77 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Arial; padding: 20px; text-align: center; }
-    .thankyou-box { max-width: 500px; margin: auto; padding: 30px; border: 1px solid #ccc; border-radius: 10px; }
-    h1 { color: green; }
-    p { margin: 10px 0; }
-    a { color: #007BFF; text-decoration: none; }
+    body {
+      background: #0d0d0d;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .thank-you-box {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 15px #00e67650;
+    }
+
+    .thank-you-box h1 {
+      color: #00e676;
+      margin-bottom: 15px;
+    }
+
+    .thank-you-box p {
+      margin: 10px 0;
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    .thank-you-box .highlight {
+      color: #00acc1;
+      font-weight: bold;
+    }
+
+    .go-home {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 10px 20px;
+      background: #00acc1;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .go-home:hover {
+      background: #008b9a;
+    }
   </style>
 </head>
+
 <body>
-  <div class="thankyou-box">
+
+  <div class="thank-you-box">
     <h1>✅ Thank You!</h1>
-    <p>We've received your order. We'll contact you as soon as possible!</p>
-    <p>Product: <strong id="product-name">-</strong></p>
-    <p>Color: <strong id="product-color">-</strong></p>
-    <p>Quantity: <strong id="product-quantity">-</strong></p>
-    <p>Total Price: <strong id="product-total">-</strong></p>
-    <br>
-    <a href="index.html">← Back to Home</a>
+    <p>We've received your order successfully.</p>
+    <p>Product: <span class="highlight" id="product-name">-</span></p>
+    <p>Color: <span class="highlight" id="product-color">-</span></p>
+    <p>Quantity: <span class="highlight" id="product-quantity">-</span></p>
+    <p>Total Price: <span class="highlight" id="product-total">-</span></p>
+    <p>We'll contact you as soon as possible to confirm the order.</p>
+    <a href="index.html" class="go-home">← Back to Home</a>
   </div>
 
   <script>
@@ -32,7 +81,13 @@
       document.getElementById("product-color").textContent = product.color || "-";
       document.getElementById("product-quantity").textContent = product.quantity || "-";
       document.getElementById("product-total").textContent = "$" + (product.price * product.quantity).toFixed(2);
+    } else {
+      document.getElementById("product-name").textContent = "No order found.";
     }
   </script>
+  
+  
+
 </body>
+
 </html>
